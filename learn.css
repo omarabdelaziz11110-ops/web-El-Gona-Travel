@@ -1,0 +1,837 @@
+:root {
+    /* الألوان الجديدة (أزرق بحري وذهبي ساطع) */
+    --color-primary: #0077B6;
+    /* أزرق بحري جديد */
+    --color-secondary: #FFC300;
+    /* ذهبي ساطع جديد */
+
+    /* ألوان الوضع الفاتح */
+    --color-text-light: #333333;
+    --color-bg-light: #F4F7F9;
+    /* ألوان الوضع الداكن */
+    --color-text-dark: #ecf0f1;
+    --color-bg-dark: #121212;
+
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --primary-glow: 0 0 15px rgba(0, 119, 182, 0.8);
+    /* توهج أزرق */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* لمنع شريط التمرير الأفقي */
+}
+
+body.light-mode {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+}
+
+h2 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--color-primary);
+    font-weight: 900;
+}
+
+.section-padding {
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- الأزرار العامة Buttons --- */
+.primary-btn,
+.secondary-btn,
+.whatsapp-btn,
+.mode-toggle-btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.4s;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.primary-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 0 4px 10px rgba(255, 195, 0, 0.4);
+}
+
+.primary-btn:hover {
+    background-color: #ffda6a;
+    transform: scale(1.02);
+    box-shadow: var(--primary-glow);
+}
+
+.secondary-btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg-light);
+    border: 1px solid var(--color-primary);
+}
+
+.secondary-btn:hover {
+    background-color: #005691;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 119, 182, 0.4);
+}
+
+.pulse-on-hover:hover {
+    animation: pulse-shadow 1.5s infinite alternate;
+}
+
+@keyframes pulse-shadow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 119, 182, 0.4);
+    }
+
+    to {
+        box-shadow: var(--primary-glow);
+    }
+}
+
+
+/* --- شريط التنقل Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    /* >>> التعديل الجديد: خلفية شبه شفافة جداً (فقط 10% لون) <<< */
+    background-color: rgba(240, 236, 236, 0.1);
+    backdrop-filter: blur(10px);
+    /* تأثير ضبابي خفيف لضمان وضوح النص (Glassmorphism) */
+    box-shadow: 0 4px 15px rgba(199, 191, 191, 0.15);
+    /* ظل خفيف */
+}
+
+/* تحديد لون الروابط والشعار باللون الأبيض ليظهر بوضوح فوق الصورة الداكنة */
+.main-header .logo,
+.main-header nav ul li a {
+    color: white !important;
+    /* لون أبيض */
+    text-shadow: 0 0 5px rgba(255, 251, 251, 0.5);
+    /* ظل نصي خفيف لتحسين الوضوح */
+}
+
+/* تأكد من أن الروابط تظل تتفاعل مع اللون الثانوي عند التمرير */
+.main-header nav ul li a:hover {
+    color: var(--color-secondary) !important;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 900;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+}
+
+.mode-toggle-btn {
+    padding: 10px 15px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- قسم الأبطال Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 150px;
+    overflow: hidden;
+}
+
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.hero-image-parallax {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.1s linear;
+    filter: brightness(0.6) grayscale(0.1);
+}
+
+.hero-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    font-weight: 900;
+    color: var(--color-bg-light);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    margin-bottom: 40px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 119, 182, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+.search-bar input {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    color: var(--color-text-light);
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.search-btn-large {
+    flex-shrink: 0;
+}
+
+
+/* --- عرض الأسبوع Weekly Deal --- */
+.deal-card {
+    background: linear-gradient(135deg, var(--color-primary), #00A6FB);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 119, 182, 0.6);
+    margin-bottom: 50px;
+    animation: strong-pulse-blue 3s infinite ease-in-out;
+}
+
+.deal-card h2 {
+    color: var(--color-secondary);
+    font-size: 2.8em;
+}
+
+.deal-card p {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.countdown-timer {
+    color: white;
+    font-size: 4.5em;
+    font-weight: 900;
+    text-shadow: 0 0 12px var(--color-secondary);
+    margin-bottom: 30px;
+}
+
+@keyframes strong-pulse-blue {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 119, 182, 0.9);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
+    }
+}
+
+/* --- الميزات Features --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.feature-item {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    border-bottom: 6px solid var(--color-secondary);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.feature-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item i {
+    font-size: 3.5em;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 1.4em;
+    color: var(--color-primary);
+}
+
+/* --- الفنادق والرحلات Grids --- */
+.hotels-grid,
+.trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.hotel-card,
+.trip-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+    border-bottom: 6px solid var(--color-secondary);
+    text-align: center;
+}
+
+.hotel-card:hover,
+.trip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hotel-card img,
+.trip-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease-in-out;
+}
+
+.hotel-card:hover img,
+.trip-card:hover img {
+    transform: scale(1.08);
+}
+
+.hotel-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hotel-card-content h3,
+.trip-card h3 {
+    color: var(--color-primary);
+    font-size: 1.6em;
+    margin-bottom: 5px;
+}
+
+.hotel-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.hotel-price span {
+    color: var(--color-secondary);
+    font-size: 1.6em;
+}
+
+/* --- معرض الصور Carousel --- */
+.carousel-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    direction: ltr;
+    /* لجعل الحركة من اليمين لليسار طبيعية */
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-item {
+    min-width: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 119, 182, 0.9), rgba(0, 119, 182, 0.1));
+    color: var(--color-bg-light);
+    font-weight: 500;
+    padding: 25px;
+    font-size: 1.4em;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 119, 182, 0.6);
+    color: var(--color-bg-light);
+    border: none;
+    padding: 18px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+    border-radius: 50%;
+    /* لجعل الأزرار دائرية */
+    opacity: 0.8;
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    opacity: 1;
+}
+
+.carousel-dots {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: var(--color-secondary);
+    transform: scale(1.2);
+}
+
+/* --- المشرفون والاتصال Supervisors & Contact --- */
+.supervisors-list {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.supervisor-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    border-top: 6px solid var(--color-secondary);
+    text-align: center;
+    transition: transform 0.3s;
+    flex: 1;
+    max-width: 350px;
+}
+
+.supervisor-card:hover {
+    transform: translateY(-5px);
+}
+
+.supervisor-card h3 {
+    color: var(--color-primary);
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.phone-number {
+    display: block;
+    font-size: 1.6em;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 25px;
+    display: inline-block;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.social-media h3 {
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.social-icon {
+    font-size: 2.5em;
+    margin: 0 15px;
+    transition: transform 0.4s;
+}
+
+.social-icon:hover {
+    transform: scale(1.3);
+}
+
+.facebook-color {
+    color: #3b5998;
+}
+
+.instagram-color {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* إضافة خاصية قياسية */
+    color: transparent;
+    /* قيمة احتياطية */
+}
+
+/* --- الوضع الليلي Dark Mode --- */
+body.dark-mode {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: var(--color-secondary);
+}
+
+/* >>> التعديل في الوضع الليلي <<< */
+body.dark-mode .main-header {
+    /* خلفية داكنة وشبه شفافة */
+    background-color: rgba(18, 18, 18, 0.5);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .logo,
+body.dark-mode nav ul li a {
+    color: var(--color-text-dark) !important;
+    /* لون النص في الوضع الداكن */
+    text-shadow: none;
+}
+
+body.dark-mode nav ul li a:hover {
+    color: var(--color-secondary) !important;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+body.dark-mode .hotel-card,
+body.dark-mode .trip-card,
+body.dark-mode .feature-item,
+body.dark-mode .supervisor-card {
+    background-color: #1F1F1F;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    border-bottom-color: var(--color-secondary);
+    border-top-color: var(--color-secondary);
+}
+
+body.dark-mode .hotel-card h3,
+body.dark-mode .trip-card h3,
+body.dark-mode .social-media h3,
+body.dark-mode .search-bar input {
+    color: var(--color-text-dark);
+}
+
+body.dark-mode .search-bar {
+    background-color: rgba(30, 30, 30, 0.85);
+    border-color: rgba(255, 195, 0, 0.6);
+}
+
+body.dark-mode .search-bar input {
+    background-color: #2c2c2c;
+    border-color: #555;
+}
+
+body.dark-mode .whatsapp-btn {
+    color: var(--color-text-dark);
+}
+
+body.dark-mode .feature-item i {
+    color: var(--color-secondary);
+}
+
+/* --- تأثيرات التلاشي Fade-In Effects --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================== */
+/* === التجاوبية Media Queries === */
+/* ===================================== */
+
+/* --- الأجهزة اللوحية الكبيرة (iPad Pro - أقل من 1200px) --- */
+@media (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+
+    .search-bar {
+        width: 90%;
+    }
+
+    .search-bar input {
+        padding: 10px 12px;
+    }
+}
+
+/* --- الأجهزة اللوحية واللابتوب الصغير (Tablet/Laptop - أقل من 992px) --- */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 15px 3%;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+    }
+
+    .countdown-timer {
+        font-size: 3.5em;
+    }
+
+    .carousel-item img {
+        height: 450px;
+    }
+
+    .supervisors-list {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .supervisor-card {
+        max-width: 45%;
+    }
+}
+
+/* --- الهواتف الذكية والأجهزة اللوحية الصغيرة (Mobile - أقل من 768px) --- */
+@media (max-width: 768px) {
+
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+    }
+
+    nav {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .primary-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .hero-section {
+        height: 70vh;
+        padding-top: 100px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        padding: 15px;
+        width: 95%;
+    }
+
+    .search-bar input {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .search-btn-large {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .section-padding {
+        padding: 50px 3%;
+    }
+
+    .deal-card {
+        padding: 25px 15px;
+    }
+
+    .deal-card h2 {
+        font-size: 1.8em;
+    }
+
+    .countdown-timer {
+        font-size: 3em;
+    }
+
+    /* شبكات البطاقات تصبح عمودية */
+    .features-grid,
+    .hotels-grid,
+    .trips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-item {
+        padding: 30px;
+    }
+
+    .carousel-item img {
+        height: 250px;
+    }
+
+    .carousel-caption {
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .prev-btn,
+    .next-btn {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .supervisors-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .supervisor-card {
+        max-width: 100%;
+        width: 100%;
+        padding: 25px;
+    }
+
+    .phone-number {
+        font-size: 1.4em;
+    }
+}

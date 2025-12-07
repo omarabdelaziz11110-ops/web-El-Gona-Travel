@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرحلات الجماعية - El Gona Travel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="learn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .trip-details-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        body.dark-mode .trip-details-card {
+            background-color: #1F1F1F;
+        }
+
+        .trip-details-card img {
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+            border: 3px solid var(--color-secondary);
+        }
+
+        .trip-info h3 {
+            color: var(--color-primary);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .trip-info p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .price-tag {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--color-secondary);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Responsive for Trips Page */
+        @media (max-width: 768px) {
+            .trip-details-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .trip-details-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .trip-info {
+                padding: 10px;
+            }
+
+            .trip-info h3 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+
+    
+
+    <header class="main-header" id="header">
+        <div class="logo">El Gona Travel</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#hero">الرئيسية</a></li>
+                <li><a href="index.html#hotels-offers">الإقامة</a></li>
+                <li><a href="#trips-list">الرحلات الجماعية</a></li>
+                <li><a href="index.html#gallery">معرض الصور</a></li>
+                <li><a href="index.html#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <a href="booking.html" class="primary-btn pulse-on-hover">حجز رحلة القاهرة</a>
+            <button id="mode-toggle" class="mode-toggle-btn">🌙</button>
+        </div>
+    </header>
+
+    <section id="trips-list" class="section-padding" style="padding-top: 150px;">
+        <h2>جدول الرحلات الجماعية القادمة</h2>
+
+        <div class="trip-details-card fade-in">
+            <img src="WhatsApp Image 2025-11-14 at 2.13.30 PM (2).jpeg" alt="رحلة دريم بارك">
+            <div class="trip-info">
+                <h3>رحلة القاهرة الكبرى: دريم بارك والواحة!</h3>
+                <p>انطلق معنا في مغامرة ترفيهية لا مثيل لها. هذه الرحلة تجمع بين الإثارة في مدينة **دريم بارك**، والتسوق
+                    في **مول مصر**، وزيارة أماكن تاريخية مثل **الحسين**، واختتام اليوم في **الواحة**.</p>
+                <p>**الموعد:** الجمعة 19 / 12 / 2025</p>
+                <span class="price-tag">السعر: 499 ج.م للشخص (شامل رسوم الدخول)</span>
+                <a href="booking.html" class="primary-btn" style="margin-top: 15px;">احجز هذه الرحلة الآن!</a>
+            </div>
+        </div>
+
+        <div class="trip-details-card fade-in">
+            <img src="WhatsApp Image 2025-11-14 at 2.13.10 PM.jpeg" alt="مهرجان الألوان">
+            <div class="trip-info">
+                <h3>مهرجان الألوان على شاطئ الإسكندرية</h3>
+                <p>يوم مبهج ومليء بالألوان على شاطئ عروس البحر الأبيض المتوسط. فعاليات شاطئية، أنشطة رياضية، وأجواء
+                    احتفالية لا تُنسى. لا تفوت فرصة الاستمتاع بأجمل غروب.</p>
+                <p>**الموعد:** الجمعة 26 / 12 / 2025</p>
+                <span class="price-tag">السعر: 350 ج.م للشخص</span>
+                <a href="booking.html" class="secondary-btn" style="margin-top: 15px;">احجز هذه الرحلة الآن!</a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 El Gona Travel. جميع الحقوق محفوظة. تصميم المغامرة المتجددة.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

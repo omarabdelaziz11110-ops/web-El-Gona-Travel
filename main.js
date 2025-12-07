@@ -30,12 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 3. العد التنازلي لرحلة القاهرة (19/12/2025) ---
-    const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
+   // ملف: main.js
 
-        // التاريخ المستهدف: 19 ديسمبر 2025، الساعة 00:00:00 (الشهر 11 هو ديسمبر في JS)
-        const targetDate = new Date(2025, 11, 19, 0, 0, 0).getTime();
+    // --- 3. العد التنازلي لرحلة القاهرة (28/12/2025) ---
+    const countdownElement = document.getElementById('countdown');
+    const weeklyDealSection = document.getElementById('weekly-deal'); // إضافة جديدة للحصول على القسم
+    
+    if (countdownElement && weeklyDealSection) {
+        
+        // التاريخ المستهدف: 28 ديسمبر 2025، الساعة 00:00:00 (يتم قراءته من خاصية data-target-date)
+        const targetDateString = weeklyDealSection.getAttribute('data-target-date');
+        
+        // التحقق من وجود التاريخ وقابلية تحويله
+        if (!targetDateString) {
+            console.error("Missing data-target-date attribute on #weekly-deal section.");
+            return;
+        }
+        
+        const targetDate = new Date(targetDateString).getTime(); // تحويل السلسلة إلى وقت Unix
 
         const updateCountdown = setInterval(() => {
             const now = new Date().getTime();
@@ -206,4 +218,5 @@ function sendWhatsAppBooking() {
 }
 
 // جعل الدالة متاحة عالمياً لـ onclick في HTML
+
 window.sendWhatsAppBooking = sendWhatsAppBooking;

@@ -111,22 +111,21 @@
 
     <section class="section-padding" style="padding-top: 150px;">
         <div class="booking-form-container fade-in">
-            <div class="trip-summary">
-                <h3>تفاصيل الرحلة: دريم بارك والواحة</h3>
-                <p><span>الوجهة:</span> القاهرة الكبرى (دريم بارك / مول مصر / الحسين / الواحة)</p>
-                <p><span>الموعد:</span> الجمعة الموافق 19 / 12 / 2025</p>
-                <p><span>السعر:</span> 499 ج.م للشخص (يشمل تذكرة دريم بارك)</p>
+        <div class="trip-summary">
+            <h3>تفاصيل الرحلة: دريم بارك والواحة</h3>
+            <p><span>الوجهة:</span> القاهرة الكبرى (دريم بارك / مول مصر / الحسين / الواحة)</p>
+            <p><span>الموعد:</span> الأحد الموافق 28 / 12 / 2025</p>
+            <p><span>السعر:</span> 499 ج.م للشخص (يشمل تذكرة دريم بارك)</p>
+        </div>
+        
+        <form class="booking-form" id="bookingForm" onsubmit="return false;">
+            <h3>استمارة حجز الرحلة</h3>
+        
+            <div class="form-group">
+                <label for="tripName">الرحلة المختارة:</label>
+                <input type="text" id="tripName" name="tripName" required value="رحلة القاهرة: دريم بارك والواحة (28/12/2025)"
+                    readonly>
             </div>
-
-            <form class="booking-form" id="bookingForm" onsubmit="return false;">
-                <h3>استمارة حجز الرحلة</h3>
-
-                <div class="form-group">
-                    <label for="tripName">الرحلة المختارة:</label>
-                    <input type="text" id="tripName" name="tripName" required
-                        value="رحلة القاهرة: دريم بارك والواحة (19/12/2025)" readonly>
-                </div>
-
                 <div class="form-group">
                     <label for="name">الاسم الثلاثي كاملاً:</label>
                     <input type="text" id="name" name="name" required placeholder="">

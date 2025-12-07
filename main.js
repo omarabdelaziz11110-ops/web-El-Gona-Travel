@@ -30,23 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   // ملف: main.js
+    // ملف: main.js
 
     // --- 3. العد التنازلي لرحلة القاهرة (28/12/2025) ---
     const countdownElement = document.getElementById('countdown');
     const weeklyDealSection = document.getElementById('weekly-deal'); // إضافة جديدة للحصول على القسم
-    
+
     if (countdownElement && weeklyDealSection) {
-        
+
         // التاريخ المستهدف: 28 ديسمبر 2025، الساعة 00:00:00 (يتم قراءته من خاصية data-target-date)
         const targetDateString = weeklyDealSection.getAttribute('data-target-date');
-        
+
         // التحقق من وجود التاريخ وقابلية تحويله
         if (!targetDateString) {
             console.error("Missing data-target-date attribute on #weekly-deal section.");
             return;
         }
-        
+
         const targetDate = new Date(targetDateString).getTime(); // تحويل السلسلة إلى وقت Unix
 
         const updateCountdown = setInterval(() => {
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 1000);
     }
-
 
     // --- 4. معرض الصور التفاعلي (Carousel) ---
     const carouselSlide = document.querySelector('.carousel-slide');
@@ -218,5 +217,4 @@ function sendWhatsAppBooking() {
 }
 
 // جعل الدالة متاحة عالمياً لـ onclick في HTML
-
 window.sendWhatsAppBooking = sendWhatsAppBooking;
